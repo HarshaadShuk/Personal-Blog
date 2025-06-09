@@ -1,0 +1,536 @@
+/*
+========================================
+Personal Blog CSS (Enhanced Minimalist Style)
+Author: Gemini (for Harshaad Shukoor)
+Version: 2.7
+========================================
+
+TABLE OF CONTENTS
+------------------
+1.  Global Styles & Custom Properties
+2.  Typography
+3.  Layout & Container
+4.  Header, Search & Navigation
+5.  Hero Section
+6.  Blog Posts Section
+7.  Single Article Page
+8.  About Page
+9.  Contact Page
+10. Footer
+11. Responsive Design (Media Queries)
+----------------------------------------
+*/
+
+/* 1. Global Styles & Custom Properties
+---------------------------------------- */
+:root {
+    /* Color Palette */
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --text-light: #6c757d;
+    --heading-color: #1a1a1a;
+    --accent-color: #007BFF;
+    --accent-dark: #0056b3;
+    --card-bg: #ffffff;
+    --border-color: #e9ecef;
+
+    /* Typography */
+    --font-heading: 'Poppins', 'Helvetica Neue', sans-serif;
+    --font-body: 'Lora', 'Georgia', serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+
+    /* Other */
+    --border-radius: 8px;
+    --border-radius-large: 16px; /* Increased for softer corners */
+    --transition-speed: 0.3s;
+    --shadow: 0 2px 4px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-hover: 0 10px 15px rgba(0,0,0,0.05), 0 4px 6px rgba(0,0,0,0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    font-size: 16px; /* Base font size */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* 2. Typography
+---------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--heading-color);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--accent-dark);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+
+/* 3. Layout & Container
+---------------------------------------- */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+/* 4. Header, Search & Navigation
+---------------------------------------- */
+header {
+    background-color: rgba(248, 249, 250, 0.8);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    gap: var(--spacing-lg);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    flex-shrink: 0; /* Prevents the logo from shrinking */
+}
+
+.search-container {
+    flex-grow: 1;
+    max-width: 380px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 30px; /* Pill shape */
+    background-color: var(--card-bg);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.main-nav a {
+    font-family: var(--font-heading);
+    color: var(--text-light);
+    font-weight: 500;
+    padding-bottom: var(--spacing-xs);
+    position: relative;
+    white-space: nowrap; /* Prevents nav items from wrapping */
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width var(--transition-speed) ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--heading-color);
+}
+
+
+/* 5. Hero Section
+---------------------------------------- */
+.hero {
+    text-align: center;
+    padding: var(--spacing-xxl) 0;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+    font-weight: 700;
+}
+
+.hero-tagline {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-sm);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 6. Blog Posts Section
+---------------------------------------- */
+.blog-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+}
+
+.blog-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.post-preview {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-large); /* Softer rounded corners */
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-preview:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(0, 123, 255, 0.5); /* Highlight border on hover */
+}
+
+.post-meta {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+.post-category {
+    margin-left: var(--spacing-sm);
+    font-weight: 500;
+    color: var(--accent-color);
+}
+
+.post-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--heading-color);
+    transition: color var(--transition-speed) ease;
+}
+
+.post-preview:hover .post-title {
+    color: var(--accent-color); /* Change title color on card hover */
+}
+
+.post-summary {
+    color: #495057;
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1; /* Ensures footer of card aligns */
+}
+
+.read-more {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--accent-color);
+    align-self: flex-start; /* Aligns button to the left */
+}
+
+/* 7. Single Article Page
+---------------------------------------- */
+.article-header {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-lg);
+}
+.article-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-top: var(--spacing-sm);
+}
+.article-meta {
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.article-meta a {
+    color: var(--text-light);
+    transition: color 0.3s;
+}
+.article-meta a:hover {
+    color: var(--accent-color);
+}
+.meta-divider {
+    margin: 0 0.5rem;
+}
+
+.article-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.article-lead {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.article-content p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+}
+.article-content h2,
+.article-content h3 {
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
+}
+.article-content h2 { font-size: 1.8rem; }
+.article-content h3 { font-size: 1.4rem; }
+
+.article-content blockquote {
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: #e9ecef;
+    border-left: 5px solid var(--accent-color);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    font-size: 1.2rem;
+    color: var(--heading-color);
+    font-style: italic;
+}
+.article-content blockquote cite {
+    display: block;
+    margin-top: var(--spacing-sm);
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    color: var(--text-light);
+}
+
+.article-footer {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+.back-to-blog {
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+
+/* 8. About Page
+---------------------------------------- */
+.about-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--card-bg);
+    box-shadow: var(--shadow);
+}
+
+.bio {
+    max-width: 720px;
+    text-align: center;
+}
+
+.bio p {
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+
+/* 9. Contact Page
+---------------------------------------- */
+.contact-section {
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-lg) auto;
+    color: var(--text-light);
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.contact-link {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    font-family: var(--font-heading);
+    color: var(--text-color);
+    transition: all var(--transition-speed) ease;
+    text-align: left;
+}
+
+.contact-link:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.contact-link strong {
+    color: var(--heading-color);
+    margin-right: var(--spacing-xs);
+}
+
+
+/* 10. Footer
+---------------------------------------- */
+.site-footer {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    margin-top: var(--spacing-xl);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+
+/* 11. Responsive Design (Media Queries)
+---------------------------------------- */
+@media (min-width: 769px) {
+    .about-content {
+        flex-direction: row;
+        text-align: left;
+    }
+    .bio p {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    .search-container {
+        width: 100%;
+        max-width: 100%;
+        order: 3; /* Move search to bottom of header on mobile */
+    }
+    .logo {
+        order: 1;
+    }
+    .main-nav {
+        order: 2;
+        width: 100%;
+    }
+     .main-nav ul {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+
+    .container {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+
+    .blog-posts-grid {
+        grid-template-columns: 1fr; /* Stack posts on mobile */
+    }
+    .article-content {
+        padding: 0 var(--spacing-sm);
+    }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshaad's Hues | Personal Blog</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- =========== Header =========== -->
+    <header class="container">
+        <div class="header-content">
+            <a href="index.html" class="logo">Harshaad Shukoor</a>
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search articles...">
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- =========== Hero Section =========== -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Harshaad's Hues</h1>
+                <p class="hero-tagline">A personal blog about science, the universe, and everything in between.</p>
+            </div>
+        </section>
+
+        <!-- =========== Blog Posts Section =========== -->
+        <section class="blog-section container">
+            <h2 class="section-title">Latest Posts</h2>
+            <!-- This container will be filled automatically by main.js -->
+            <div class="blog-posts-grid" id="blog-posts-container"></div>
+        </section>
+    </main>
+
+    <!-- =========== Footer =========== -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Harshaad Shukoor. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="posts.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
