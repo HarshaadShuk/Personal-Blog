@@ -2,7 +2,7 @@
 ========================================
 Personal Blog CSS (Enhanced Minimalist Style)
 Author: Gemini (for Harshaad Shukoor)
-Version: 2.8
+Version: 2.9
 ========================================
 
 TABLE OF CONTENTS
@@ -16,7 +16,7 @@ TABLE OF CONTENTS
 7.  Single Article Page
 8.  About Page
 9.  Contact Page
-10. CV Page
+10. CV Page (Sleek Update)
 11. Footer
 12. Responsive Design (Media Queries)
 ----------------------------------------
@@ -462,31 +462,32 @@ header {
     margin-right: var(--spacing-xs);
 }
 
-/* 10. CV Page
+/* 10. CV Page (Sleek Update)
 ---------------------------------------- */
 .cv-container {
-    background-color: var(--card-bg);
-    padding: var(--spacing-xl);
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--shadow);
+    background-color: transparent; /* Removed background for minimalism */
+    padding: 0;
+    box-shadow: none;
     margin-top: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
-    border: 1px solid var(--border-color);
+    border: none;
 }
 .cv-header {
-    text-align: center;
-    border-bottom: 2px solid var(--border-color);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
 }
 .cv-header h1 {
     margin: 0;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+    font-weight: 600;
 }
 .cv-contact-info {
     font-family: var(--font-heading);
     color: var(--text-light);
-    margin-top: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    font-size: 0.95rem;
 }
 .cv-contact-info a {
     color: var(--text-light);
@@ -496,18 +497,24 @@ header {
 }
 
 .cv-section {
-    margin-bottom: var(--spacing-lg);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg) 0;
 }
-.cv-section:last-child {
-    margin-bottom: 0;
-}
-.cv-section-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--accent-color);
+.cv-section:not(:last-child) {
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: var(--spacing-xs);
-    margin-bottom: var(--spacing-md);
+}
+
+.cv-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0;
+    margin: 0 0 var(--spacing-sm) 0;
+    border: none;
 }
 
 .cv-item {
@@ -519,31 +526,51 @@ header {
 .cv-item-header {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     font-family: var(--font-heading);
     font-weight: 600;
+    margin-bottom: var(--spacing-xs);
 }
 .cv-item-header h3 {
     font-size: 1.1rem;
-    margin-bottom: 0;
+    margin: 0;
+    font-weight: 600;
+}
+.cv-item-header span {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    flex-shrink: 0;
+    padding-left: var(--spacing-sm);
 }
 .cv-item-subheader {
-    font-style: italic;
+    font-style: normal;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.cv-item ul, .cv-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: var(--spacing-sm);
+}
+.cv-item ul li, .cv-list li {
+    padding-left: var(--spacing-md);
+    position: relative;
+    margin-bottom: var(--spacing-xs);
     color: var(--text-light);
-    margin-bottom: var(--spacing-xs);
 }
-
-.cv-item ul {
-    list-style-position: outside;
-    padding-left: 20px;
-    margin-top: var(--spacing-xs);
+.cv-item ul li::before, .cv-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-color);
+    font-weight: bold;
 }
-
-.cv-list {
-    list-style-position: outside;
-    padding-left: 20px;
-}
-.cv-list li {
-    margin-bottom: var(--spacing-xs);
+.cv-item ul li strong {
+    font-weight: 600;
+    font-family: var(--font-heading);
+    color: var(--text-color);
 }
 
 .cv-skills {
@@ -552,12 +579,13 @@ header {
     gap: var(--spacing-sm);
 }
 .skill-tag {
-    background-color: #e9ecef;
-    color: var(--text-color);
+    background-color: var(--bg-color);
+    color: var(--text-light);
     font-family: var(--font-heading);
     padding: 0.4rem 0.8rem;
-    border-radius: 30px;
+    border-radius: 6px;
     font-size: 0.9rem;
+    border: 1px solid var(--border-color);
 }
 
 /* 11. Footer
@@ -581,6 +609,18 @@ header {
     }
     .bio p {
         text-align: left;
+    }
+    .cv-section {
+        grid-template-columns: 200px 1fr; /* Two columns on desktop */
+        gap: var(--spacing-xl);
+        padding: var(--spacing-lg) 0;
+    }
+    .cv-section-title {
+        text-align: left;
+        font-size: 0.9rem;
+    }
+    .cv-header {
+        text-align: center;
     }
 }
 
@@ -609,6 +649,7 @@ header {
     }
     .cv-item-header {
         flex-direction: column;
+        align-items: flex-start;
     }
 }
 
