@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to display posts
     const displayPosts = (postsToDisplay) => {
+        if (!blogPostsContainer) return;
         blogPostsContainer.innerHTML = ''; // Clear existing posts
 
         if (postsToDisplay.length === 0) {
@@ -38,20 +39,28 @@ document.addEventListener('DOMContentLoaded', () => {
         displayPosts(posts);
 
         // Add event listener for the search input
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filteredPosts = posts.filter(post => 
-                post.title.toLowerCase().includes(searchTerm) || 
-                post.summary.toLowerCase().includes(searchTerm) ||
-                post.category.toLowerCase().includes(searchTerm)
-            );
-            displayPosts(filteredPosts);
-        });
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredPosts = posts.filter(post => 
+                    post.title.toLowerCase().includes(searchTerm) || 
+                    post.summary.toLowerCase().includes(searchTerm) ||
+                    post.category.toLowerCase().includes(searchTerm)
+                );
+                displayPosts(filteredPosts);
+            });
+        }
     }
 
     // --- Single Post Page Logic ---
     const articleContainer = document.getElementById('article-container');
     if (articleContainer) {
+        // Hide search bar on single post page if it exists in the header
+        const singlePostSearch = document.querySelector('.search-container');
+        if (singlePostSearch) {
+            singlePostSearch.style.display = 'none';
+        }
+        
         const urlParams = new URLSearchParams(window.location.search);
         const postId = parseInt(urlParams.get('id'));
         

@@ -2,7 +2,7 @@
 ========================================
 Personal Blog CSS (Enhanced Minimalist Style)
 Author: Gemini (for Harshaad Shukoor)
-Version: 2.7
+Version: 2.8
 ========================================
 
 TABLE OF CONTENTS
@@ -16,8 +16,9 @@ TABLE OF CONTENTS
 7.  Single Article Page
 8.  About Page
 9.  Contact Page
-10. Footer
-11. Responsive Design (Media Queries)
+10. CV Page
+11. Footer
+12. Responsive Design (Media Queries)
 ----------------------------------------
 */
 
@@ -461,8 +462,105 @@ header {
     margin-right: var(--spacing-xs);
 }
 
+/* 10. CV Page
+---------------------------------------- */
+.cv-container {
+    background-color: var(--card-bg);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid var(--border-color);
+}
+.cv-header {
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+.cv-header h1 {
+    margin: 0;
+    font-size: 2.8rem;
+}
+.cv-contact-info {
+    font-family: var(--font-heading);
+    color: var(--text-light);
+    margin-top: var(--spacing-xs);
+}
+.cv-contact-info a {
+    color: var(--text-light);
+}
+.cv-contact-info a:hover {
+    color: var(--accent-color);
+}
 
-/* 10. Footer
+.cv-section {
+    margin-bottom: var(--spacing-lg);
+}
+.cv-section:last-child {
+    margin-bottom: 0;
+}
+.cv-section-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+.cv-item {
+    margin-bottom: var(--spacing-md);
+}
+.cv-item:last-child {
+    margin-bottom: 0;
+}
+.cv-item-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+.cv-item-header h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+.cv-item-subheader {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+.cv-item ul {
+    list-style-position: outside;
+    padding-left: 20px;
+    margin-top: var(--spacing-xs);
+}
+
+.cv-list {
+    list-style-position: outside;
+    padding-left: 20px;
+}
+.cv-list li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.cv-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+.skill-tag {
+    background-color: #e9ecef;
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    padding: 0.4rem 0.8rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+}
+
+/* 11. Footer
 ---------------------------------------- */
 .site-footer {
     text-align: center;
@@ -474,7 +572,7 @@ header {
 }
 
 
-/* 11. Responsive Design (Media Queries)
+/* 12. Responsive Design (Media Queries)
 ---------------------------------------- */
 @media (min-width: 769px) {
     .about-content {
@@ -505,6 +603,12 @@ header {
     }
      .main-nav ul {
         justify-content: center;
+    }
+     .cv-header h1 {
+        font-size: 2.2rem;
+    }
+    .cv-item-header {
+        flex-direction: column;
     }
 }
 
