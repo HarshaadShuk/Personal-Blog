@@ -1,8 +1,8 @@
 /*
 ========================================
-Personal Blog CSS (Enhanced Minimalist Style)
+Personal Blog CSS (Dark Theme)
 Author: Gemini (for Harshaad Shukoor)
-Version: 2.9
+Version: 3.2
 ========================================
 
 TABLE OF CONTENTS
@@ -25,15 +25,15 @@ TABLE OF CONTENTS
 /* 1. Global Styles & Custom Properties
 ---------------------------------------- */
 :root {
-    /* Color Palette */
-    --bg-color: #f8f9fa;
-    --text-color: #212529;
-    --text-light: #6c757d;
-    --heading-color: #1a1a1a;
-    --accent-color: #007BFF;
-    --accent-dark: #0056b3;
-    --card-bg: #ffffff;
-    --border-color: #e9ecef;
+    /* Color Palette - Dark Theme */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --text-light: #a0a0a0;
+    --heading-color: #ffffff;
+    --accent-color: #0084ff; /* Slightly brighter blue for better contrast */
+    --accent-dark: #006dd1;
+    --card-bg: #1e1e1e;
+    --border-color: #333333;
 
     /* Typography */
     --font-heading: 'Poppins', 'Helvetica Neue', sans-serif;
@@ -49,10 +49,10 @@ TABLE OF CONTENTS
 
     /* Other */
     --border-radius: 8px;
-    --border-radius-large: 16px; /* Increased for softer corners */
+    --border-radius-large: 16px; 
     --transition-speed: 0.3s;
-    --shadow: 0 2px 4px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-hover: 0 10px 15px rgba(0,0,0,0.05), 0 4px 6px rgba(0,0,0,0.05);
+    --shadow: 0 1px 2px rgba(0,0,0,0.1);
+    --shadow-hover: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 * {
@@ -70,7 +70,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.7;
-    font-size: 16px; /* Base font size */
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -114,13 +114,13 @@ p {
 /* 4. Header, Search & Navigation
 ---------------------------------------- */
 header {
-    background-color: rgba(248, 249, 250, 0.8);
+    background-color: rgba(18, 18, 18, 0.8); /* Dark transparent background */
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .header-content {
@@ -137,7 +137,7 @@ header {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--heading-color);
-    flex-shrink: 0; /* Prevents the logo from shrinking */
+    flex-shrink: 0;
 }
 
 .search-container {
@@ -152,17 +152,22 @@ header {
     font-size: 0.9rem;
     border: 1px solid var(--border-color);
     border-radius: 30px; /* Pill shape */
-    background-color: var(--card-bg);
+    background-color: #252525; /* Darker input background */
+    color: var(--text-color);
     transition: border-color 0.3s, box-shadow 0.3s;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23a0a0a0' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: left 1rem center;
+}
+
+#search-input::placeholder {
+    color: var(--text-light);
 }
 
 #search-input:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 3px rgba(0, 132, 255, 0.25);
 }
 
 .main-nav ul {
@@ -177,7 +182,7 @@ header {
     font-weight: 500;
     padding-bottom: var(--spacing-xs);
     position: relative;
-    white-space: nowrap; /* Prevents nav items from wrapping */
+    white-space: nowrap;
 }
 
 .main-nav a::after {
@@ -210,7 +215,7 @@ header {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
 }
 
@@ -245,9 +250,8 @@ header {
 .post-preview {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-large); /* Softer rounded corners */
+    border-radius: var(--border-radius-large);
     padding: var(--spacing-lg);
-    box-shadow: var(--shadow);
     transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease;
     display: flex;
     flex-direction: column;
@@ -256,7 +260,7 @@ header {
 .post-preview:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
-    border-color: rgba(0, 123, 255, 0.5); /* Highlight border on hover */
+    border-color: rgba(0, 132, 255, 0.5);
 }
 
 .post-meta {
@@ -279,13 +283,13 @@ header {
 }
 
 .post-preview:hover .post-title {
-    color: var(--accent-color); /* Change title color on card hover */
+    color: var(--accent-color);
 }
 
 .post-summary {
-    color: #495057;
+    color: var(--text-light);
     margin-bottom: var(--spacing-md);
-    flex-grow: 1; /* Ensures footer of card aligns */
+    flex-grow: 1;
 }
 
 .read-more {
@@ -293,7 +297,7 @@ header {
     font-family: var(--font-heading);
     font-weight: 600;
     color: var(--accent-color);
-    align-self: flex-start; /* Aligns button to the left */
+    align-self: flex-start;
 }
 
 /* 7. Single Article Page
@@ -302,6 +306,8 @@ header {
     text-align: center;
     padding: var(--spacing-xl) 0;
     margin-bottom: var(--spacing-lg);
+    position: relative; /* Add for z-index */
+    z-index: 1; /* Keep header behind content */
 }
 .article-title {
     font-size: clamp(2.2rem, 5vw, 3.5rem);
@@ -329,6 +335,10 @@ header {
 .article-content {
     max-width: 750px;
     margin: 0 auto;
+    position: relative; /* Add for z-index */
+    z-index: 2; /* Place content in front of header */
+    background-color: var(--bg-color); /* Make content opaque */
+    padding-top: var(--spacing-lg);
 }
 
 .article-lead {
@@ -353,11 +363,11 @@ header {
 .article-content blockquote {
     margin: var(--spacing-lg) 0;
     padding: var(--spacing-sm) var(--spacing-md);
-    background-color: #e9ecef;
+    background-color: var(--card-bg);
     border-left: 5px solid var(--accent-color);
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
     font-size: 1.2rem;
-    color: var(--heading-color);
+    color: var(--text-color);
     font-style: italic;
 }
 .article-content blockquote cite {
@@ -400,8 +410,8 @@ header {
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--card-bg);
-    box-shadow: var(--shadow);
+    border: 3px solid var(--bg-color);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .bio {
@@ -454,7 +464,7 @@ header {
 .contact-link:hover {
     border-color: var(--accent-color);
     transform: translateY(-3px);
-    box-shadow: var(--shadow);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .contact-link strong {
@@ -465,7 +475,7 @@ header {
 /* 10. CV Page (Sleek Update)
 ---------------------------------------- */
 .cv-container {
-    background-color: transparent; /* Removed background for minimalism */
+    background-color: transparent;
     padding: 0;
     box-shadow: none;
     margin-top: var(--spacing-xl);
@@ -477,6 +487,8 @@ header {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
 }
 .cv-header h1 {
     margin: 0;
@@ -501,6 +513,9 @@ header {
     grid-template-columns: 1fr;
     gap: var(--spacing-sm);
     padding: var(--spacing-lg) 0;
+    position: relative;
+    z-index: 2;
+    background-color: var(--bg-color);
 }
 .cv-section:not(:last-child) {
     border-bottom: 1px solid var(--border-color);
@@ -509,7 +524,7 @@ header {
 .cv-section-title {
     font-size: 1rem;
     font-weight: 600;
-    color: #2d92ff;
+    color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 0;
@@ -535,6 +550,7 @@ header {
     font-size: 1.1rem;
     margin: 0;
     font-weight: 600;
+    color: var(--heading-color);
 }
 .cv-item-header span {
     font-size: 0.9rem;
@@ -544,7 +560,7 @@ header {
 }
 .cv-item-subheader {
     font-style: normal;
-    color: var(--text-color);
+    color: var(--text-light);
     margin-bottom: var(--spacing-xs);
 }
 
@@ -570,7 +586,7 @@ header {
 .cv-item ul li strong {
     font-weight: 600;
     font-family: var(--font-heading);
-    color: var(--text-color);
+    color: var(--heading-color);
 }
 
 .cv-skills {
@@ -579,7 +595,7 @@ header {
     gap: var(--spacing-sm);
 }
 .skill-tag {
-    background-color: var(--bg-color);
+    background-color: #252525;
     color: var(--text-light);
     font-family: var(--font-heading);
     padding: 0.4rem 0.8rem;
